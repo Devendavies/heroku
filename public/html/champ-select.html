@@ -1,0 +1,49 @@
+<!--  SHOW ALL CHAMPIONS -->
+<div class='allChamps'>
+  <div class="free-champ-rotation">
+    <span>
+
+        <ul>
+          <div class="free-champ-tiles">
+            <li>
+              <img src="" + {{ name }}>
+            </li>
+          </div>
+        </ul>
+
+    </span>
+  </div>
+
+  <h1> CHAMPIONS </h1>
+
+  <!-- Dropdown Trigger -->
+  <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Select Role</a>
+
+  <!-- Dropdown Structure -->
+  <div class="role-dropdown">
+    <ul id='dropdown1' class='dropdown-content'>
+      <li><a href="#tank">Tank</a></li>
+      <li><a href="#fighter">Fighter</a></li>
+      <li class="divider"></li>
+      <li><a href="#mage">Mage</a></li>
+      <li><a href="#assasin">Assasin</a></li>
+      <li class="divider"></li>
+      <li><a href="#marksman">Marksman</a></li>
+      <li><a href="#support">Support</a></li>
+    </ul>
+  </div>
+  <!-- *********** Check if Jquery initialization needed *************** -->
+
+  <!-- Champion Search -->
+
+  <form>
+    <div class="input-field">
+      <input type="search" id="search-field" class="field" required maxlength="">
+      <label for="search-field"><i class="mdi-action-search"></i></label>
+      <i class="mdi-navigation-close close"></i>
+    </div>
+  </form>
+
+
+
+  <!-- Show All Champion Tiles OR Searched T/iles -->

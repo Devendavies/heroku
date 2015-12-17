@@ -1,0 +1,28 @@
+{
+  "name": "lol-champ-feed",
+  "version": "1.0.0",
+  "description": "League of Legends hits social media",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devendavies/Final-GA-Project.git"
+  },
+  "keywords": [
+    "Mongo",
+    "Express",
+    "Angular",
+    "Node"
+  ],
+  "author": "Deven Davies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Devendavies/Final-GA-Project/issues"
+  },
+  "homepage": "https://github.com/Devendavies/Final-GA-Project#readme",
+  "devDependencies": {
+    "ember-cli-materialize": "^0.18.6"
+  }
+}

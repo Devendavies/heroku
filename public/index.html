@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<!-- Twitter API Authentication -->
+<!--
+$consumer          = "6IBioMnssNk0WNOitSnhiLtWP"
+$consumersecret    = "Ofhl3GLmY1Wi15av7vXDh6rTF8bnhzo3USPLqhYN0mnf22N99N"
+$accesstoken       = "818848524-9ehIZea1T97NNVHPjXdZgkVu38b4mraF2Zmo5mBA"
+$accesstokensecret = "d1AFDiqvzXeAkboaGF0p9XXFZ57IC1wKS5nYomgkWxUmI"
+$twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstokensecret);
+ -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Champion Shouts </title>
+    <link  type="text/css" href="/css/style.css" media="screen" charset="utf-8" rel="stylesheet">       </link>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">                     </script>
+    <!-- MaterializeCSS -->
+    <link  type="text/css" href="./css/materialize.min.css"  media="screen,projection" rel="stylesheet"></link>
+    <script type="text/javascript" src="js/materialize.min.js">                                         </script>
+    <!-- Handlebars -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+    <!-- Local file additions -->
+    <!-- <script type="text/javascript" src="js/FeedController"></script> -->
+    <script type="text/javascript" src="js/app.js" ></script>
+    <script type="text/javascript" src="js/ChampionController.js"></script>
+    <!-- <script src="js/champion_feedController.js"></script> -->
+  </head>
+
+  <body>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+
+    <div class="hamburger"></div>
+
+    <!-- GREETING PAGE -->
+
+    <div class="results-div">
+
+      <div class="background">
+        <img src="http://na.leagueoflegends.com/sites/default/files/styles/scale_large/public/upload/art/shadow_isles_1920x1080.jpg?itok=unIyEbM7"></image>
+      </div>
+
+      <div class="horizontal"> </div>
+
+    </div>
+
+    <div class="returns-div"> </div>
+
+    <div class="relays-div"></div>
+
+    <template id="facepage-template">
+      <div class="face-container">
+        <div class="facepage">
+
+          <div class="backbox"></div>
+
+          <div class="faceTitle">
+            <span><h1> League  <span style='font-size: 14px; color: red'> of </span>Tweets </h1>
+            <p> (Featuring LoL and Twitter API) </p>
+          </div>
+
+          <div class="faceBio">
+            <article>
+              <p> Welcome to League of Tweets, where all your wildest... ummm, champion tweets are viewed? View your favorite champion and see what some of the latest tweets about him/her/it are! Feeling salty about that last loss because heimer killed you while afk due to op turrets?? Let the world know and maybe, just maybe, good ol Rito might just listen. May the patches be ever in your favor! </p>
+            </article>
+          </div>
+
+          <button class="btn waves-effect waves-teal champ-select"> Champions </button>
+
+        </div>
+      </div>
+    </template>
+
+      <!--  SHOW ALL CHAMPIONS -->
+    <template id="allChamps">
+      <div class='allChamps'>
+        <div class="free-champ-rotation">
+          <h2> Free To Play! </h2>
+          <image src='http://na.leagueoflegends.com/sites/default/files/styles/scale_xlarge/public/upload/lol.com_.banner.article.f2protation.14dec.jpg?itok=WkaY9dPy' placeholder="SHTUFF"></image>
+        </div>
+
+        <h1> CHAMPIONS </h1>
+      </div>
+
+      <!-- Champion Search -->
+      <div class="nav">
+        <form>
+          <div class="input-field">
+            <input type="search" id="search-field" class="field" required maxlength="">
+            <label for="search-field"><i class="mdi-action-search"></i></label>
+            <i class="mdi-navigation-close close"></i>
+          </div>
+        </form>
+
+        <button class="goToFacepage btn"> Intro </button>
+
+          <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='dropdown1'> Select Role </a>
+        <!-- Dropdown Structure -->
+        <div class="role-dropdown">
+          <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#tank">Tank</a></li>
+            <li><a href="#fighter">Fighter</a></li>
+            <li class="divider"></li>
+            <li><a href="#mage">Mage</a></li>
+            <li><a href="#assasin">Assasin</a></li>
+            <li class="divider"></li>
+            <li><a href="#marksman">Marksman</a></li>
+            <li><a href="#support">Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </template>
+
+      <!-- Show All Champion Tiles OR Searched T/iles -->
+      <script type="template" id="champion-tile-template">
+        <div class="tiles">
+          <img src="{{ image }}" class="champion-tile"/>
+        </div>
+      </script>
+
+      <!-- Show Champion and Related Tweets -->
+        <!-- <template id="ChampionTweets"></template> -->
+        <!-- <button class="goToFacepage"></button>    -->
+        <template id="twitterFeed">
+          <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-large red">
+              <i class="large mdi-navigation-menu"></i>
+            </a>
+            <ul>
+              <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+              <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+              <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+              <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+            </ul>
+          </div>
+        </template>
+
+      <!-- Shneaky Shneaky... -->
+      <button id="humpa"></button>
+
+      <div class="championProfile">
+
+        <div class="champion-data">
+          <img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Amumu_0.jpg" class="prof-pic"></img>
+          <img src="http://lol.garena.co.id/mediastorage/files/Stats%20Amumu.png" class="stats"></img>
+        </div>
+
+        <ul>
+          <div class="tweets">
+            <li><a href="https://twitter.com/HammettStudios"><img src="/images/tweet1.png"></img></a></li>
+            <li><a href="https://twitter.com/FunLeagueMemes"><img src="/images/tweet2.png"></img></a></li>
+            <li><a href="https://twitter.com/marinaridorsa"><img src="/images/tweet3.png"></img></a></li>
+            <li><a href="https://twitter.com/LastWordGame"><img src="/images/tweet4.png"></img></a></li>
+            <li><a href="https://twitter.com/yamidost"><img src="/images/tweet5.png"></img></a></li>
+            <li><a href="https://twitter.com/search?q=%23lol%20%23Amumu&src=typd"><button> Most Recent Amumu Posts </button></a></li>
+          </div>
+        </ul>
+
+      </div>
+
+  </body>
+</html>
