@@ -17,7 +17,7 @@ db.once('open', function (callback) {
 
 // mongoose.connect(db.url);  repetative? => (documentation)
 
-app.use('/', express.static(__dirname + '/public'));
+app.get('/', express.static(__dirname + '/public'));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
