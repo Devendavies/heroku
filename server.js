@@ -17,7 +17,7 @@ db.once('open', function (callback) {
 
 // mongoose.connect(db.url);  repetative? => (documentation)
 
-app.get('/', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -25,6 +25,10 @@ app.use(bodyParser.json());
 
 app.use('/scripts', express.static(__dirname + '/node_modules'))
 app.use(routes);
+
+app.get('/', function() => {
+  res.json({message: 'hey!'});
+})
 
 // Server
 const server = app.listen(3000, () => {
